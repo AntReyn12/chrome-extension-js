@@ -3,9 +3,17 @@ const inputEl = document.querySelector("#input-el");
 const ulEl = document.querySelector("#list-el");
 let myLeads = [];
 
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+console.log(leadsFromLocalStorage);
+if (leadsFromLocalStorage) {
+  myLeads = leadsFromLocalStorage;
+  renderLeads();
+}
+
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
   inputEl.value = "";
+  localStorage.setItem("myLeads", JSON.stringify(myLeads));
   renderLeads();
 });
 
@@ -17,7 +25,6 @@ function renderLeads() {
                       href= "${myLeads[i]}" target="_blank"> ${myLeads[i]} 
                     </a>
                   </li>`;
-    console.log(listItems);
     //*Another way to create elements*//
     //const li = document.createElement("li");
     //li.textContent += myLeads[i];
