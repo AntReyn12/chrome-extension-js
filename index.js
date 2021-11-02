@@ -21,7 +21,7 @@ function render(leads) {
                   </li>`;
     //*Another way to create elements*//
     //const li = document.createElement("li");
-    //li.textContent += myLeads[i];
+    //li.textContent += leads[i];
     //ulEl.append(li);
   }
   ulEl.innerHTML = listItems;
