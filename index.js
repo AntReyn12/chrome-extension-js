@@ -11,15 +11,6 @@ if (leadsFromLocalStorage) {
   render(myLeads);
 }
 
-tabBtn.addEventListener("click", function () {
-  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-    console.log(tabs);
-    myLeads.push(tabs[0].url);
-    localStorage.setItem("myLeads", JSON.stringify(myLeads));
-    render(myLeads);
-  });
-});
-
 function render(leads) {
   let listItems = "";
   for (i = 0; i < leads.length; i++) {
@@ -35,6 +26,15 @@ function render(leads) {
   }
   ulEl.innerHTML = listItems;
 }
+
+tabBtn.addEventListener("click", function () {
+  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+    console.log(tabs);
+    myLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+  });
+});
 
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
