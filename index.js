@@ -4,7 +4,6 @@ const deleteBtn = document.querySelector("#delete-btn");
 const tabBtn = document.querySelector("#tab-btn");
 const ulEl = document.querySelector("#list-el");
 let myLeads = [];
-
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 if (leadsFromLocalStorage) {
